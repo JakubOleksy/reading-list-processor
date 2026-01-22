@@ -10,7 +10,7 @@ import os
 from app.database import get_session, init_db
 from app.models import ReadingListItem, Settings
 from app.safari_reader import extract_reading_list, get_default_bookmarks_path
-from app.summarizer import fetch_webpage_content, summarize_with_claude
+from app.summarizer import fetch_webpage_content, summarize_with_llm
 from pydantic import BaseModel
 
 app = FastAPI(title="Reading List Processor")
@@ -134,7 +134,7 @@ async def process_items(
                     continue
 
             # Summarize
-            summary = summarize_with_claude(item.content, custom_instructions)
+            summary = summarize_with_llm(item.content, custom_instructions)
             item.summary = summary
             item.processed = True
             item.processed_date = datetime.utcnow()
