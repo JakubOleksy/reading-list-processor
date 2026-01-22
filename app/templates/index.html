@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading List Processor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reading List Processor</h1>
+            <div class="header-actions">
+                <button id="syncBtn" class="btn btn-primary">Sync from Safari</button>
+                <button id="settingsBtn" class="btn">Settings</button>
+            </div>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <button id="processAllBtn" class="btn btn-success">Process All Unprocessed</button>
+                <button id="reprocessAllBtn" class="btn btn-warning">Reprocess All</button>
+            </div>
+            <div class="stats">
+                <span id="totalCount">Total: 0</span>
+                <span id="processedCount">Processed: 0</span>
+                <span id="unprocessedCount">Unprocessed: 0</span>
+            </div>
+        </div>
+
+        <div id="settingsPanel" class="settings-panel hidden">
+            <h2>Custom Instructions</h2>
+            <textarea id="customInstructions" placeholder="Enter custom instructions for how to summarize articles..."></textarea>
+            <div class="settings-actions">
+                <button id="saveSettingsBtn" class="btn btn-primary">Save</button>
+                <button id="cancelSettingsBtn" class="btn">Cancel</button>
+            </div>
+        </div>
+
+        <div class="items-container" id="itemsContainer">
+            <div class="loading">Loading...</div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
