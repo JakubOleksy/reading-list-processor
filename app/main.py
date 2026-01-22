@@ -55,6 +55,11 @@ async def sync_reading_list(session: AsyncSession = Depends(get_session)):
 
     try:
         reading_list = extract_reading_list(bookmarks_path)
+    except PermissionError:
+        raise HTTPException(
+            status_code=403,
+            detail="Permission denied to read Safari bookmarks. Please grant Full Disk Access to Terminal: System Settings → Privacy & Security → Full Disk Access → Enable for Terminal (or your terminal app)."
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error reading Safari bookmarks: {str(e)}")
 
